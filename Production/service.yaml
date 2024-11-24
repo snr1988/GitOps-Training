@@ -8,9 +8,9 @@ metadata:
   namespace: default
 spec:
   ports:
-  - port: 8081
-    protocol: TCP
+  - protocol: TCP
     targetPort: 80
+    nodePort: 30000
   selector:
     app: web-1
   type: NodePort
