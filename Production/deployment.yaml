@@ -5,6 +5,7 @@ metadata:
   labels:
     app: web-1
   name: web-1
+  namespace: default
 spec:
   replicas: 3
   selector:
