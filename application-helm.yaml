@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: web-helm
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  source:
+    helm:
+      releaseName: chart1
+      parameters: # To manually overwrite value of parameters from value.yaml
+        - name: "replicaCount"
+          value: "5"
+      valueFiles: #This is for taking overwritten parameters from a file rather than using parameters.
+        - myvalues.yaml
+    repoURL: 'https://github.com/harsh2478/GitOps-Training.git'
+    path: chart1
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
