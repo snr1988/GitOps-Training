@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: database
+  name: database
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: database
+    spec:
+      containers:
+      - image: mysql
+        name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-root
+              key: MYSQL_ROOT_PASSWORD
+          #value: "redhat"  # Very dangerous! 
+        resources: {}
+status: {}
