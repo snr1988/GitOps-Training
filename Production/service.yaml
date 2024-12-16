@@ -4,6 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: web-1
+    app.kubernetes.io/instance: production-application
   name: web-1
   namespace: default
 spec:
